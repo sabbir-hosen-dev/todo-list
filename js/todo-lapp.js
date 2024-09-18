@@ -17,10 +17,11 @@ function addTodo() {
 
     todo.innerHTML = `
            <div class="font-bold text-gray-900">${input.value}</div>
-            <i class="fa-solid fa-trash text-white shadow-slate-900 bg-red-500 p-[2px] rounded-md hover:text-red-500 cursor-pointer" ></i>
+            <i class="fa-solid fa-trash delete text-white shadow-slate-900 bg-red-500 p-[2px] rounded-md hover:text-red-500 cursor-pointer" ></i>
            `;
     todos.appendChild(todo);
     input.value = "";
+
   } else {
     alert("Please input your todo");
   }
@@ -29,9 +30,16 @@ function addTodo() {
 // add button listiner 
 addBtn.addEventListener("click", addTodo);
 
+const deleteBtn = document.getElementsByClassName("delete");
 
-// clear btn listener 
+
+todos.addEventListener("click", (e) => {
+  e.target.parentNode.remove();
+})
+
+
+// clear all  todos
 clearbtn.addEventListener("click", function () {
   id = 0;
-  todos.replaceChildren();
+  todos.innerHTML = "";
 });
